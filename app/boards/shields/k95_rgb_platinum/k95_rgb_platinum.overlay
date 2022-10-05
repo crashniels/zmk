@@ -1,0 +1,30 @@
+#include "k95_rgb_platinum.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "row2col";
+
+        col-gpios
+            = <&gpio1 11 GPIO_ACTIVE_HIGH>
+            , <&gpio1 12 GPIO_ACTIVE_HIGH>
+            , <&gpio1 14 GPIO_ACTIVE_HIGH>
+            , <&gpio1 15 GPIO_ACTIVE_HIGH>
+            , <&gpio1 16 GPIO_ACTIVE_HIGH>
+            , <&gpio1 17 GPIO_ACTIVE_HIGH>
+            ;
+
+        row-gpios
+            = <&gpio1 3 GPIO_ACTIVE_HIGH>
+            , <&gpio1 4 GPIO_ACTIVE_HIGH>
+            , <&gpio1 5 GPIO_ACTIVE_HIGH>
+            , <&gpio1 7 GPIO_ACTIVE_HIGH>
+            , <&gpio1 9 GPIO_ACTIVE_HIGH>
+            ;
+    };
+};
