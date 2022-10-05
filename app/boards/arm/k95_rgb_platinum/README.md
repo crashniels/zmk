@@ -2,7 +2,7 @@
 
 Compile using 
 
-``west build -p -b lpcxpresso11u68 -- -DSHIELD=k95_rgb_platinum``
+``west build -p -b k95_rgb_platinum``
 
 and copy using
 

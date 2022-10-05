@@ -1,0 +1,12 @@
+identifier: k95_rgb_platinum
+name: Corsair K95 RGB Platinum
+type: board
+arch: arm
+toolchain:
+  - zephyr
+supported:
+  - clock_controller
+  - eeprom
+  - gpio
+  - i2c
+  - serial

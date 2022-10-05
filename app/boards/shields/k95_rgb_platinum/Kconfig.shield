@@ -1,2 +1,0 @@
-config SHIELD_K95_RGB_PLATINUM
-    def_bool $(shields_list_contains,k95_rgb_platinum)
