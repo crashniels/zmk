@@ -1,0 +1,4 @@
+config BOARD_K95_RGB_PLATINUM
+    bool "k95_rgb_platinum"
+    depends on SOC_SERIES_LPC11U6X
+    select SOC_PART_NUMBER_LPC11U68JBD100

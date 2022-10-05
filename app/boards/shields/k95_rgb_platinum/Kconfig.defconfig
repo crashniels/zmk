@@ -1,6 +1,0 @@
-if SHIELD_K95_RGB_PLATINUM
-
-config ZMK_KEYBOARD_NAME
-    default "Corsair K95 RGB Platinum / XT"
-
-endif

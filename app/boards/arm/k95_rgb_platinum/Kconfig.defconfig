@@ -1,0 +1,6 @@
+if BOARD_K95_RGB_PLATINUM
+
+config BOARD
+    default "k95_rgb_platinum"
+
+endif

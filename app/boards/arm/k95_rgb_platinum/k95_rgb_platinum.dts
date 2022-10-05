@@ -1,0 +1,61 @@
+/dts-v1/;
+#include <nxp/nxp_lpc11u68.dtsi>
+
+/ {
+     model = "K95 RGB Platium (XT)";
+     compatible = "k95_rgb_platinum";
+
+     chosen {
+             zephyr,sram = &sram0;
+             zephyr,flash = &flash0;
+             zephyr,console = &uart0;
+             zmk,kscan = &kscan0;
+     };
+
+    kscan0: kscan {
+		compatible = "zmk,kscan-gpio-matrix";
+		label = "KSCAN";
+		diode-direction = "row2col";
+
+		col-gpios
+            = <&gpio1 12 GPIO_ACTIVE_HIGH>
+            , <&gpio1 13 GPIO_ACTIVE_HIGH>
+            , <&gpio1 14 GPIO_ACTIVE_HIGH>
+            , <&gpio1 15 GPIO_ACTIVE_HIGH>
+            , <&gpio1 16 GPIO_ACTIVE_HIGH>
+            , <&gpio1 17 GPIO_ACTIVE_HIGH>
+            , <&gpio1 18 GPIO_ACTIVE_HIGH>
+            , <&gpio1 19 GPIO_ACTIVE_HIGH>
+            , <&gpio1 20 GPIO_ACTIVE_HIGH>
+            , <&gpio1 21 GPIO_ACTIVE_HIGH>
+            , <&gpio1 22 GPIO_ACTIVE_HIGH>
+            , <&gpio1 23 GPIO_ACTIVE_HIGH>
+            ;
+
+    row-gpios
+            = <&gpio1 1 GPIO_ACTIVE_HIGH>
+            , <&gpio1 2 GPIO_ACTIVE_HIGH>
+            , <&gpio1 3 GPIO_ACTIVE_HIGH>
+            , <&gpio1 4 GPIO_ACTIVE_HIGH>
+            , <&gpio1 5 GPIO_ACTIVE_HIGH>
+            , <&gpio1 6 GPIO_ACTIVE_HIGH>
+            , <&gpio1 7 GPIO_ACTIVE_HIGH>
+            , <&gpio1 8 GPIO_ACTIVE_HIGH>
+            , <&gpio1 9 GPIO_ACTIVE_HIGH>
+            ;
+	};
+  
+    sensors {
+		compatible = "zmk,keymap-sensors";
+		sensors = <&left_encoder>;
+	};
+
+    left_encoder: encoder_left {
+		compatible = "alps,ec11";
+		label = "LEFT_ENCODER";
+		a-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		b-gpios = <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		resolution = <4>;
+		status = "okay";
+	};
+};
