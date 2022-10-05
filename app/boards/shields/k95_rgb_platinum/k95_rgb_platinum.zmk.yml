@@ -1,6 +1,9 @@
 file_format: "1"
 id: k95_rgb_platinum
-name: Corsair K95 RGB Platinum / XT
+name: Corsair K95 RGB Platinum
 type: shield
 url: https://github.com/crashniels/zmk/tree/k95_rgb_platinum
 requires: [lpcxpresso11u68]
+features: 
+  - keys
+  - encoder
