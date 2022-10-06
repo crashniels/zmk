@@ -1,14 +1,16 @@
 /dts-v1/;
 #include <nxp/nxp_lpc11u68.dtsi>
+#include <dt-bindings/pinctrl/lpc11u6x-pinctrl.h>
 
 / {
      model = "K95 RGB Platium (XT)";
-     compatible = "k95_rgb_platinum";
+     compatible = "corsair,k95_rgb_platinum";
 
      chosen {
              zephyr,sram = &sram0;
              zephyr,flash = &flash0;
              zephyr,console = &uart0;
+             zephyr,shell-uart = &uart0;
              zmk,kscan = &kscan0;
      };
 
@@ -58,4 +60,27 @@
 		resolution = <4>;
 		status = "okay";
 	};
+};
+
+&uart0 {
+        pinmuxs = <&pinmux0 18 IOCON_FUNC1>, <&pinmux0 19 IOCON_FUNC1>;
+	pinmux-names = "RXD", "TXD";
+	current-speed = <115200>;
+	status = "okay";
+};
+
+&cpu0 {
+	clock-frequency = <48000000>;
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&gpio2 {
+	status = "okay";
 };
