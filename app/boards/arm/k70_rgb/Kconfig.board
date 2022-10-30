@@ -1,0 +1,4 @@
+config BOARD_K70_RGB
+    bool "k70_rgb"
+    depends on SOC_SERIES_LPC11U3X
+    select SOC_PART_NUMBER_LPC11U37FBD64

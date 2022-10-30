@@ -1,0 +1,6 @@
+if BOARD_K70_RGB
+
+config BOARD
+    default "k70_rgb"
+
+endif

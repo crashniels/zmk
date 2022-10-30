@@ -1,0 +1,12 @@
+identifier: k70_rgb
+name: Corsair K70 RGB
+type: board
+arch: arm
+toolchain:
+  - zephyr
+supported:
+  - clock_controller
+  - eeprom
+  - gpio
+  - i2c
+  - serial
