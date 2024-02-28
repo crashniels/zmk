@@ -1,82 +1,89 @@
 /dts-v1/;
 #include <nxp/nxp_lpc11u37.dtsi>
-#include <dt-bindings/pinctrl/lpc11u6x-pinctrl.h>
+
+#include "k70_rgb-pinctrl.dtsi"
 
 / {
-     model = "K70 RGB";
-     compatible = "corsair,k70_rgb";
+        model = "K70 RGB";
+        compatible = "corsair,k70_rgb";
 
-     chosen {
-             zephyr,sram = &sram0;
-             zephyr,flash = &flash0;
-             zephyr,console = &uart0;
-             zephyr,shell-uart = &uart0;
-             zmk,kscan = &kscan0;
-     };
+        chosen {
+                zephyr,sram = &sram0;
+                zephyr,flash = &flash0;
+                zephyr,console = &uart0;
+                zephyr,shell-uart = &uart0;
+                zmk,kscan = &kscan0;
+        };
 
-    kscan0: kscan {
-		compatible = "zmk,kscan-gpio-matrix";
-		label = "KSCAN";
-		diode-direction = "row2col";
+        kscan0: kscan {
+                compatible = "zmk,kscan-gpio-matrix";
+                label = "KSCAN";
+                diode-direction = "row2col";
 
-		col-gpios
-            = <&gpio1 12 GPIO_ACTIVE_HIGH>
-            , <&gpio1 13 GPIO_ACTIVE_HIGH>
-            , <&gpio1 14 GPIO_ACTIVE_HIGH>
-            , <&gpio1 15 GPIO_ACTIVE_HIGH>
-            , <&gpio1 16 GPIO_ACTIVE_HIGH>
-            , <&gpio1 17 GPIO_ACTIVE_HIGH>
-            , <&gpio1 18 GPIO_ACTIVE_HIGH>
-            , <&gpio1 19 GPIO_ACTIVE_HIGH>
-            , <&gpio1 20 GPIO_ACTIVE_HIGH>
-            , <&gpio1 21 GPIO_ACTIVE_HIGH>
-            , <&gpio1 22 GPIO_ACTIVE_HIGH>
-            , <&gpio1 23 GPIO_ACTIVE_HIGH>
-            ;
+                col-gpios
+                = <&gpio1 12 GPIO_ACTIVE_HIGH>
+                , <&gpio1 13 GPIO_ACTIVE_HIGH>
+                , <&gpio1 14 GPIO_ACTIVE_HIGH>
+                , <&gpio1 15 GPIO_ACTIVE_HIGH>
+                , <&gpio1 16 GPIO_ACTIVE_HIGH>
+                , <&gpio1 17 GPIO_ACTIVE_HIGH>
+                , <&gpio1 18 GPIO_ACTIVE_HIGH>
+                , <&gpio1 19 GPIO_ACTIVE_HIGH>
+                , <&gpio1 20 GPIO_ACTIVE_HIGH>
+                , <&gpio1 21 GPIO_ACTIVE_HIGH>
+                , <&gpio1 22 GPIO_ACTIVE_HIGH>
+                , <&gpio1 23 GPIO_ACTIVE_HIGH>
+                ;
 
-    row-gpios
-            = <&gpio1 1 GPIO_ACTIVE_HIGH>
-            , <&gpio1 2 GPIO_ACTIVE_HIGH>
-            , <&gpio1 3 GPIO_ACTIVE_HIGH>
-            , <&gpio1 4 GPIO_ACTIVE_HIGH>
-            , <&gpio1 5 GPIO_ACTIVE_HIGH>
-            , <&gpio1 6 GPIO_ACTIVE_HIGH>
-            , <&gpio1 7 GPIO_ACTIVE_HIGH>
-            , <&gpio1 8 GPIO_ACTIVE_HIGH>
-            , <&gpio1 9 GPIO_ACTIVE_HIGH>
-            ;
-	};
-  
-    sensors {
-		compatible = "zmk,keymap-sensors";
-		sensors = <&left_encoder>;
-	};
+                row-gpios
+                = <&gpio1 0 GPIO_ACTIVE_HIGH>
+                , <&gpio1 1 GPIO_ACTIVE_HIGH>
+                , <&gpio1 2 GPIO_ACTIVE_HIGH>
+                , <&gpio1 3 GPIO_ACTIVE_HIGH>
+                , <&gpio1 4 GPIO_ACTIVE_HIGH>
+                , <&gpio1 5 GPIO_ACTIVE_HIGH>
+                , <&gpio1 6 GPIO_ACTIVE_HIGH>
+                , <&gpio1 7 GPIO_ACTIVE_HIGH>
+                , <&gpio1 8 GPIO_ACTIVE_HIGH>
+                , <&gpio1 9 GPIO_ACTIVE_HIGH>
+                ;
+        };
 
-    left_encoder: encoder_left {
-		compatible = "alps,ec11";
-		label = "LEFT_ENCODER";
-		a-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		b-gpios = <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		resolution = <4>;
-		status = "okay";
-	};
+        sensors {
+                compatible = "zmk,keymap-sensors";
+                sensors = <&left_encoder>;
+        };
+
+        left_encoder: encoder_left {
+                compatible = "alps,ec11";
+                label = "LEFT_ENCODER";
+                a-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+                b-gpios = <&gpio0 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+                resolution = <4>;
+                status = "okay";
+        };
 };
 
 &uart0 {
-        pinmuxs = <&pinmux0 18 IOCON_FUNC1>, <&pinmux0 19 IOCON_FUNC1>;
-	pinmux-names = "RXD", "TXD";
-	current-speed = <115200>;
-	status = "okay";
+        pinctrl-0 = <&uart0_default>;
+        pinctrl-names = "default";
+        current-speed = <115200>;
+        status = "okay";
 };
 
 &cpu0 {
-	clock-frequency = <12000000>;
+        clock-frequency = <12000000>;
+};
+
+&syscon {
+        pinctrl-0 = <&syscon_default>;
+        pinctrl-names = "default";
 };
 
 &gpio0 {
-	status = "okay";
+        status = "okay";
 };
 
 &gpio1 {
-	status = "okay";
+        status = "okay";
 };
