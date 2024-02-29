@@ -75,10 +75,10 @@
         clock-frequency = <12000000>;
 };
 
-&syscon {
-        pinctrl-0 = <&syscon_default>;
-        pinctrl-names = "default";
-};
+// &syscon {
+//         pinctrl-0 = <&syscon_default>;
+//         pinctrl-names = "default";
+// };
 
 &gpio0 {
         status = "okay";

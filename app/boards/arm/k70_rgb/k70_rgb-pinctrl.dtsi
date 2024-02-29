@@ -24,7 +24,7 @@
         };
     };
 
-    i2c0_fast: i2c0_fast {I
+    i2c0_fast: i2c0_fast {
         group0 {
             pinmux = <I2C0_SCL_PIO0_4>,
                      <I2C0_SDA_PIO0_5>;
